@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <span v-bind:title="message">
+        鼠标悬停几秒钟查看此处动态绑定的提示信息！
+    </span>
+    <span v-if="seen">
+        seen是true  你能看到我
+    </span>
+    <ol>
+        <li v-for="todo in todos">
+            {{todo.text}}
+        </li>
+    </ol>
+    <p>{{msg}}</p>
+    <button v-on:click="reverseMsg">反转消息</button>
+    <p>{{msgInput}}</p>
+    <input v-model="msgInput"/>
+    <ol>
+        <todo-item v-for="item in todos"
+        v-bind:todo="item"
+        v-bind:key="item.id"></todo-item>
+    </ol>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="demo1.js"></script>
+</body>
+</html>
