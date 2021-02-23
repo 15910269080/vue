@@ -3,7 +3,7 @@ Vue.component('todo-item',{
     template:'<li>{{todo.text}}</li>'
 })
 
-var app = new Vue({
+var vm = new Vue({
     el: '#app',
     data: {
         message: 'Hello Vue!' + new Date().toLocaleString(),
@@ -14,11 +14,38 @@ var app = new Vue({
             { id: 2, text: '随便其它什么人吃的东西' }
         ],
         msg: 'Hello wjk!',
-        msgInput: 'msgInput'
+        msgInput: 'msgInput',
+        firstName: 'wjk',
+        lastName: 'czj'
+    },
+    computed:{
+        reverseMsgComputed: function () {
+            return this.msg.split('').reverse().join('')
+        },
+        fullName:{
+            get: function () {
+                return this.firstName + ' ' + this.lastName
+            },
+            set: function (newValue) {
+                var fullName = newValue.split(' ')
+                this.firstName = fullName[0]
+                this.lastName = fullName[fullName.length-1]
+            }
+        }
+    },
+    watch:{
+
     },
     methods:{
         reverseMsg: function () {
             this.msg = this.msg.split('').reverse().join('')
+        },
+        warn: function (message, event) {
+            // 现在我们可以访问原生事件对象
+            if (event) {
+                event.preventDefault()
+            }
+            alert(message)
         }
     }
 })

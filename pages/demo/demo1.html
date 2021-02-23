@@ -18,6 +18,7 @@
         </li>
     </ol>
     <p>{{msg}}</p>
+    <p>{{reverseMsgComputed}}</p>
     <button v-on:click="reverseMsg">反转消息</button>
     <p>{{msgInput}}</p>
     <input v-model="msgInput"/>
@@ -26,6 +27,12 @@
         v-bind:todo="item"
         v-bind:key="item.id"></todo-item>
     </ol>
+    <p>{{firstName}}</p>
+    <p>{{lastName}}</p>
+    <p>{{fullName}}</p>
+    <button v-on:click="warn('Form cannot be submitted yet.', $event)">
+        Submit
+    </button>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="demo1.js"></script>
