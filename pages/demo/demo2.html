@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello world</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{context}}
+    </div>
+    <script type="text/javascript">
+//        var dom = document.getElementById('app')
+//        dom.innerHTML = 'Hello World!'
+//        setTimeout(function () {
+//            dom.innerHTML = 'ssss'
+//        },2000)
+        var vm = new Vue({
+            el: '#app',
+            data:{
+                context: 'Hello World!'
+            }
+        })
+        setTimeout(function () {
+            vm.$data.context = 'bye World!'
+        },2000)
+    </script>
+</body>
+</html>
