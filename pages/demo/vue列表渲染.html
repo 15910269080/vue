@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表渲染</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div v-for="(item,index) of list" :key="index">
+        {{item.text}}====={{index}}
+    </div>
+    <div v-for="(item,key,index) of listObj">
+        {{item}}====={{key}} ===== {{index}}
+    </div>
+    <div v-for="arr of arrs">
+        {{arr}}
+    </div>
+</div>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            // 1.push pop shift(删除第一个) unshift(在第一个加元素)  splice  sort  reverse
+            // 2.直接修改引用
+            // 3.Vue.set方法   修改数组
+            list:[
+                {
+                    id: '202101',
+                    text: 'wjk'
+                },
+                {
+                    id: '202102',
+                    text: 'czj'
+                },
+                {
+                    id: '202103',
+                    text: 'love'
+                },
+                {
+                    id: '202104',
+                    text: '20'
+                } ,
+                {
+                    id: '202105',
+                    text: 'day'
+                }
+            ],
+            // 1.直接修改引用
+            // 2.Vue.set方法   修改对象
+            listObj:{
+                name:'wjk',
+                age: 200,
+                gender: 'male',
+                aslary: 'secret'
+            },
+            arrs:[1,2,3,4]
+        }
+    })
+</script>
+</body>
+</html>

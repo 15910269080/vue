@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件渲染</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id = 'app'>
+    <div v-if="show==='a'">this tis a</div>
+    <div v-else-if="show==='b'">this tis b</div>
+    <div v-else>this is c</div>
+    <div v-show="show">czj</div>
+
+    <template v-if="loginType==='username'">
+        <label>Username</label>
+        <input placeholder="Enter your username">
+    </template>
+    <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address">
+    </template>
+    <button @click="handleClick">切换</button>
+</div>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data: {
+            show:'a',
+            loginType: 'username'
+        },
+        methods:{
+            handleClick: function () {
+                this.loginType = this.loginType==='username'?"email":"username"
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

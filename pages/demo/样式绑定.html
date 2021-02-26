@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .activated{
+            color: red;
+        }
+        .activated-one{
+            font-size: 18px;
+        }
+        .hoverColor{
+            color:yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id = 'app'>
+        <div @click="handleDivClick2"
+            :class="{hoverColor:isHover}">
+            czj
+        </div>
+        <div @click="handleDivClicke"
+            :class="[activated,activatedOne]">
+            wjk
+        </div>
+        <div :style="styleObj" @click="handleStyleClick">
+            Hello World
+        </div>
+    </div>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            isHover: false,
+            activated:'',
+            activatedOne:'activated-one',
+            styleObj:{
+                color:'red'
+            }
+        },
+        methods:{
+            handleDivClicke: function () {
+                this.activated =  this.activated === 'activated'?'':'activated'
+            },
+            handleDivClick2: function () {
+                this.isHover = !this.isHover
+            },
+            handleStyleClick: function () {
+                this.styleObj.color = this.styleObj.color ==='red'?'yellow':'red'
+            }
+        }
+    })
+</script>
+</body>
+</html>
