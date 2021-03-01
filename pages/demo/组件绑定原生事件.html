@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <child @click="handleClick"></child>
+    <child1 @click.native="handleClick"></child1>
+</div>
+<script>
+    Vue.component('child',{
+        methods:{
+            handleChildClick: function () {
+                this.$emit('click')
+            }
+        },
+        template:'<div @click="handleChildClick">child</div>'
+    })
+    Vue.component('child1',{
+        template:'<div>child1</div>'
+    })
+    var vm = new Vue({
+        el: '#app',
+        methods:{
+            handleClick: function () {
+                console.log('点击');
+            }
+        }
+    })
+</script>
+</body>
+</html>

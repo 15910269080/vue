@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id = 'app'>
+    <!--注意这块参数的传递-->
+    <child content="hello world"></child>
+    <child :content="'hello world'"></child>
+    <!--这个传的是数字类型-->
+    <child :content="111"></child>
+
+    <!--这个传的是字符串-->
+    <child1 valuetext="1222332"></child1>
+</div>
+<script>
+    Vue.component('child1',{
+        props:{
+            valuetext: {
+                type: String,
+                required: true,
+                default: '默认值',
+                validator: function (value) {
+                    return (value.length>5)
+                }
+            }
+        },
+        template: '<div>{{valuetext}}</div>'
+    })
+    var child = {
+        props:{
+            content: [String, Number],
+
+        },
+        template: '<div>{{content}}</div>'
+    }
+    var vm = new Vue({
+        el:'#app',
+        components:{
+            child:child
+        }
+    })
+</script>
+</body>
+</html>

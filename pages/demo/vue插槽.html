@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue插槽slot</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <child>
+        <!--具名插槽-->
+        <div class="header" slot="header">header</div>
+        <div class="footer" slot="footer">footer</div>
+    </child>
+    <custom-input v-model="searchText"></custom-input>
+</div>
+<script>
+    Vue.component('child',{
+        template: `<div>
+            <slot name="header"></slot>
+            <div class="content">content</div>
+            <slot name="footer"></slot>
+        </div>`
+    })
+    Vue.component('custom-input', {
+        props: ['value'],
+        template: `
+            <div>
+                <input
+                  v-bind:value="value"
+                  v-on:input="$emit('input', $event.target.value)"
+                />
+                <p>{{value}}</p>
+            </div>
+          `
+    })
+    var vm = new Vue({
+        el: '#app',
+        data:{
+            searchText:''
+        }
+    })
+</script>
+</body>
+</html>
