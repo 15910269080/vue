@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="velocity.js"></script>
+<body>
+<div id="app">
+    <transition name="fade"
+        @before-enter="beforeEnter"
+        @enter="enter"
+        @after-enter="afterEnter">
+        <div v-show="isShow">Hello World</div>
+    </transition>
+    <button @click="handleClick">切换</button>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data:{
+            isShow: true
+        },
+        methods:{
+            handleClick: function () {
+                this.isShow = !this.isShow
+            },
+            beforeEnter: function (el) {
+                el.style.opacity = 0
+            },
+            enter: function (el, done) {
+                Velocity(el,{opacity:1},{duration: 1000, complete: done})
+            },
+            afterEnter: function (el) {
+                console.log('done')
+            }
+        }
+    })
+</script>
+</body>
+</html>

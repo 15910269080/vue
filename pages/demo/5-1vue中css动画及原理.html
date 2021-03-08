@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过渡</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .fade-enter{
+            opacity: 0;
+        }
+        .fade-enter-active{
+            transition: opacity 1s;
+        }
+        .fade-leave-to{
+            opacity: 0;
+        }
+        .fade-leave-active{
+            transition: opacity 2s;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <transition name = 'fade'>
+        <div v-if="show">hello wjk</div>
+    </transition>
+    <button @click="handleClick">change</button>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data:{
+            show: true
+        },
+        methods: {
+            handleClick: function () {
+                this.show=!this.show
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
