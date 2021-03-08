@@ -5,13 +5,38 @@
     <title>Title</title>
 </head>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    .v-enter,v-leave-to{
+        opacity: 0;
+    }
+    .v-enter-active,v-leave-active{
+        transition: opacity 1s;
+    }
+</style>
 <body>
 <div id="app">
-
+    <transition-group>
+        <div v-for="item of list" :key="item.id">
+            {{item.context}}
+        </div>
+    </transition-group>
+    <button @click="add">add</button>
 </div>
 <script>
+    var index = 0
     var vm = new Vue({
         el: '#app',
+        data: {
+            list: []
+        },
+        methods: {
+            add: function () {
+                this.list.push({
+                    id: index++,
+                    context: 'wjk'
+                })
+            }
+        }
     })
 </script>
 </body>
